@@ -33,7 +33,7 @@ num_gpus_per_worker: 0 # gpu allocate to each worker
 checkpoint_freq: 100 # save model every 100 training iterations
 checkpoint_end: True # save model at the end of the exp
 restore_path: {"model_path": "", "params_path": ""} # load model and params path: 1. resume exp 2. rendering policy
-stop_iters: 1  # stop training at this iteration
+stop_iters: 9999999 # stop training at this iteration
 stop_timesteps: 2000000 # stop training at this timesteps
 stop_reward: 999999 # stop training at this reward
 seed: 321 # ray seed

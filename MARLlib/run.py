@@ -91,11 +91,10 @@ class RLlibMAGym(MultiAgentEnv):
             "space_obs": self.observation_space,
             "space_act": self.action_space,
             "num_agents": self.num_agents,
-            "episode_limit": 1,
+            "episode_limit": 500,
             "policy_mapping_info": policy_mapping_dict
         }
         return env_info
-
 
 if __name__ == '__main__':
     # # register new env
@@ -107,7 +106,7 @@ if __name__ == '__main__':
     # customize model
     model = marl.build_model(env,iql, {"core_arch": "mlp", "encode_layer": "128-128"})
     # start learning
-    iql.fit(env, model, stop={'timesteps_total': 2000000}, local_mode=True, num_gpus=0,
+    iql.fit(env, model, stop={'timesteps_total': 480000}, local_mode=True, num_gpus=0,
          share_policy = 'all', num_workers=5, checkpoint_freq=50)
     
     #agents = mp.MAPPOTrainer(config={"train_batch_size": 4000})
