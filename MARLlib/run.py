@@ -7,7 +7,7 @@ from ma_gym.envs.power_grid import PowerGrid
 from ma_gym.envs.checkers import Checkers
 from ma_gym.envs.switch import Switch
 from marllib import marl
-from marllib.envs.global_reward_env import COOP_ENV_REGISTRY as ENV_REGISTRY
+from marllib.envs.base_env import ENV_REGISTRY
 from marllib.marl.algos.core.CC import mappo as mp
 import time
 from ray.rllib.agents.ppo.ppo import PPOTrainer, DEFAULT_CONFIG as PPO_CONFIG
@@ -34,8 +34,8 @@ policy_mapping_dict = {
         "one_agent_one_policy": True,
     },
     "PowerGrid": {
-        "description": "five team cooperate",
-        "team_prefix": ("1", "2", "3", "4", "5"),
+        "description": "twenty team cooperate",
+        "team_prefix": ("1", "2", "3", "4", "5", "6", "7", "8", "9", "10","11", "12", "13", "14", "15", "16", "17", "18", "19", "20"),
         "all_agents_one_policy": True,
         "one_agent_one_policy": True,
     },
@@ -54,7 +54,7 @@ class RLlibMAGym(MultiAgentEnv):
         self.observation_space = GymDict({"obs": Box(low=np.array([0.0009, 0.00, 15, 8, 10, 10]), high=np.array([0.0045, 8.00, 15, 8, 10 , 10]),
             shape=(self.env.observation_space[0].shape[0],),
             dtype=np.dtype("float32"))})
-        self.agents = ["1", "2", "3", "4", "5"]
+        self.agents = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"]
         self.num_agents = len(self.agents)
         env_config["map_name"] = map
         self.env_config = env_config
@@ -91,7 +91,7 @@ class RLlibMAGym(MultiAgentEnv):
             "space_obs": self.observation_space,
             "space_act": self.action_space,
             "num_agents": self.num_agents,
-            "episode_limit": 500,
+            "episode_limit": 10000,
             "policy_mapping_info": policy_mapping_dict
         }
         return env_info
@@ -102,11 +102,9 @@ if __name__ == '__main__':
     # # initialize env
     env = marl.make_env(environment_name="magym", map_name="PowerGrid",abs_path="../../examples/config/env_config/magym.yaml")
     # # pick mappo algorithm
-    iql = marl.algos.iql(hyperparam_source="test")
+    mappo = marl.algos.mappo(hyperparam_source="test")
     # customize model
-    model = marl.build_model(env,iql, {"core_arch": "mlp", "encode_layer": "128-128"})
+    model = marl.build_model(env, mappo, {"core_arch": "mlp", "encode_layer": "128-128"})
     # start learning
-    iql.fit(env, model, stop={'timesteps_total': 480000}, local_mode=True, num_gpus=0,
-         share_policy = 'all', num_workers=5, checkpoint_freq=50)
-    
-    #agents = mp.MAPPOTrainer(config={"train_batch_size": 4000})
+    mappo.fit(env, model, stop={'timesteps_total': 9600000}, local_mode=True, num_gpus=0,
+         share_policy = 'all', num_workers = 20, checkpoint_freq=50)

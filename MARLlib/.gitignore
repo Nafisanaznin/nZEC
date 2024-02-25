@@ -10,3 +10,17 @@
 ./Plots/MAPPO_10_Agents/battery_charge.txt
 ./Plots/MAPPO_20_Agents/battery_charge.txt
 ./Plots/IQL_20_Agents/battery_charge.txt
+./exp_results/mappo_mlp_PowerGrid/MAPPOTrainer_magym_PowerGrid_55ddd_00000_0_2024-02-25_13-27-31/battery_charge.txt
+./exp_results/mappo_mlp_PowerGrid/MAPPOTrainer_magym_PowerGrid_c1812_00000_0_2024-02-25_11-50-18/battery_charge.txt
+./exp_results/mappo_mlp_PowerGrid/MAPPOTrainer_magym_PowerGrid_7a67f_00000_0_2024-02-25_14-11-29/battery_charge.txt
+./exp_results/mappo_mlp_PowerGrid/MAPPOTrainer_magym_PowerGrid_64f8a_00000_0_2023-12-16_12-50-27/battery_charge.txt
+./exp_results/mappo_mlp_PowerGrid/MAPPOTrainer_magym_PowerGrid_2b270_00000_0_2024-02-24_14-17-37/battery_charge.txt
+./exp_results/mappo_mlp_PowerGrid/MAPPOTrainer_magym_PowerGrid_80349_00000_0_2024-02-25_11-12-41/battery_charge.txt
+./exp_results/iql_mlp_PowerGrid/IQL_grouped_magym_PowerGrid_a349b_00000_0_2024-02-25_16-42-57/battery_charge.txt
+./exp_results/iql_mlp_PowerGrid/IQL_grouped_magym_PowerGrid_b73c5_00000_0_2024-02-24_11-15-25/battery_charge.txt
+./exp_results/iql_mlp_PowerGrid/IQL_grouped_magym_PowerGrid_410d0_00000_0_2024-02-25_15-50-06/battery_charge.txt
+./Plots/MAPPO_10_Agents/battery_charge.txt
+./Plots/IQL_10_Agents/battery_charge.txt
+./Plots/MAPPO_5_Agents/battery_charge.txt
+./Plots/MAPPO_20_Agents/battery_charge.txt
+./Plots/IQL_20_Agents/battery_charge.txt
